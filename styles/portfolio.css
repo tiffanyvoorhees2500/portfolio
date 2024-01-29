@@ -1,0 +1,22 @@
+body{
+    max-width: 960px;
+    padding: 20px;
+    text-align: center;
+    margin: 0 auto;
+}
+
+header{
+    padding: 10px;
+}
+
+nav{
+    font-size: 1.2rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+nav a{
+    display:block;
+    text-decoration: none;
+    padding: 1rem;
+}
