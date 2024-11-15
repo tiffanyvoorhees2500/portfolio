@@ -1,26 +1,100 @@
-body{
-    max-width: 960px;
-    padding: 20px;
-    text-align: center;
-    margin: 0 auto;
+@import url('https://fonts.googleapis.com/css2?family=Bree+Serif&family=Raleway&display=swap');
+
+:root {
+  --heading-font: 'Bree Serif', serif;
+  --paragraph-font: 'Raleway', sans-serif;
+
+  --dark-color: #000000;
+  --light-color: #ffffff;
+  --dark-accent: #1d6357;
+  --light-accent: #99e1d9;
 }
 
-header{
-    padding: 10px;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-nav{
-    font-size: 1.2rem;
-    display: flex;
-    justify-content: space-between;
+body {
+  font-family: var(--paragraph-font);
+  max-width: 960px;
+  padding: 1rem;
+  text-align: center;
+  margin: 0 auto;
 }
 
-nav a{
-    display:block;
-    text-decoration: none;
-    padding: 1rem;
+h1, h2, h3, h4, h5, h6{
+  font-family: var(--heading-font);
+  padding: .5rem;
 }
 
-.small-text{
-    font-size: small;
+header {
+  padding: 10px;
+}
+
+.logo {
+  text-align: left;
+}
+
+.logo img {
+  height: 50px;
+  width: auto;
+}
+
+.navigation {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  align-items: center;
+}
+
+.navigation a {
+  display: none;
+  padding: 0.75rem;
+  text-decoration: none;
+  text-align: center;
+  color: var(--dark-color);
+}
+
+.navigation a:hover {
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.wrap {
+  flex-wrap: wrap;
+}
+
+#menu {
+  font-size: 1.5rem;
+  border: 0;
+  background: none;
+  color: var(--dark-color);
+  position: absolute;
+  top: 1rem;
+  right: 1.5rem;
+  content: '☰';
+}
+
+#menu::before {
+  content: '☰';
+}
+
+#menu.open::before {
+  content: '❎';
+}
+
+.open a {
+  display: block;
+}
+
+.active {
+  font-weight: bolder;
+  font-size: large;
+}
+
+.small-text-padded {
+  font-size: .8em;
+  margin-top: 1rem;
 }

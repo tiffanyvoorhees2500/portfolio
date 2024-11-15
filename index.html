@@ -1,83 +1,90 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Tiffany Voorhees</title>
-        <meta name="description" content="Tiffany Voorhees | Portfolio" />
-        <meta name="author" content="Tiffany Voorhees" />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tiffany Voorhees</title>
+    <meta name="description" content="Tiffany Voorhees | Portfolio" />
+    <meta name="author" content="Tiffany Voorhees" />
 
-        <!-- Custom CSS -->
-        <link rel="stylesheet" href="styles/portfolio.css" />
-    </head>
-    <body>
-        <header>
-            <nav>
-                <a href="#">
-                    <img
-                        src="images/logo-svg.svg"
-                        alt="Tiffany Voorhees Logo"
-                        height="75"
-                    />
-                </a>
-                <div class="nav" id="myTab" role="tablist">
-                    <a href="#">Home</a>
-                    <a
-                        href="https://www.linkedin.com/in/tiffany-voorhees-64309644/"
-                        target="_blank"
-                        >Tiffany LinkedIn</a
-                    >
-                    <a
-                        href="https://www.facebook.com/tiffster25"
-                        target="_blank"
-                        >Tiffany Facebook</a
-                    >
-                </div>
-            </nav>
-        </header>
-        <main>
-            <p>
-                My name is Tiffany Voorhees. I am attending Brigham Young
-                University - Idaho to get my Bachelor's of Applied Sciences in
-                Software Development. This page is to keep projects that I have
-                completed.
-            </p>
-            <div>
-                <div>
-                    <div>
-                        <a
-                            href="https://script.google.com/macros/s/AKfycbzillYO4AC5ULrkq_d5nKqBs83c8Yur5adtEvZYsBsIgPMM5HgLF9j3ILbVxe7aoEUQ9A/exec"
-                            ><h5>Ordering System</h5></a
-                        >
-                        <p>Ordering System for Family/Friends.</p>
-                        <p class="small-text">
-                            Created using Google Apps Scripts
-                        </p>
-                    </div>
-                </div>
-                <div>
-                    <div>
-                        <a href="https://budgetwithtiffany.onrender.com/"
-                            ><h5>
-                                Budget Backend for CSE 341 Class
-                            </h5></a
-                        >
-                        <p>
-                            This is a backend budgeting system created by me for
-                            a class at BYU-Idaho Pathways program. Hosted on
-                            Render, and sometimes takes time to load.
-                        </p>
-                        <p class="small-text">
-                            Created using node.js & express
-                        </p>
-                    </div>
-                </div>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles/portfolio.css" />
+    <link rel="stylesheet" href="styles/portfolio-lg.css" />
+    <link rel="stylesheet" href="styles/portfolio-card.css" />
+  </head>
+  <body>
+    <header id="top-header">
+      <span class="logo">
+        <a href="#">
+          <img src="images/logo-svg.svg" alt="Tiffany Voorhees Logo" height="75" />
+        </a>
+      </span>
+      <button id="menu" aria-label="menu"></button>
+      <nav>
+        <ul class="navigation wrap">
+          <li>
+            <a id="home-link" href="#" title="Home page" class="active">Home Page</a>
+          </li>
+          <li>
+            <a id="projects-link" href="school-projects.html">Family and Friends</a>
+          </li>
+          <li>
+            <a id="personal-link" href="personal-projects.html">School Project Portfolio</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <h1>Welcome!</h1>
+      <p>
+        My name is Tiffany Voorhees. I am attending Brigham Young University - Idaho to get my Bachelor's of Applied Sciences in Software Development.
+        I am a mother to 4 boys who keep me busy, but my passion is coding. Here I have links to projects that I've created in school classes, as well
+        as personal projects that I have created over the years for family and friends.
+      </p>
+      <h2>Some of my favorite projects</h2>
+      <section class="card-container-outer">
+        <div class="card-container-inner">
+          <a
+            class="card card-linkable"
+            href="https://script.google.com/macros/s/AKfycbzillYO4AC5ULrkq_d5nKqBs83c8Yur5adtEvZYsBsIgPMM5HgLF9j3ILbVxe7aoEUQ9A/exec"
+            target="_blank"
+          >
+            <div class="card-header">
+              <h3>Ordering System</h3>
             </div>
-        </main>
-        <footer>
-            <p>©️2024 | Tiffany Voorhees | Spanish Fork, Utah</p>
-        </footer>
+            <div class="card-body">
+              My family has orered Optimal Health Systems for years. We usually do a group order, but it became hard to keep track of who owed who, as
+              well as who ordered what. This was designed to help us keep track of just that.
+            </div>
+            <div class="card-footer">
+              <p class="small-text-padded">Created using Google Apps Scripts</p>
+            </div>
+          </a>
+          <a class="card card-linkable" href="https://budgetwithtiffany.onrender.com/" target="_blank">
+            <div class="card-header">
+              <h3>Budget Backend for CSE 341 Class</h3>
+            </div>
+            <div class="card-body">
+              This is a backend budgeting system created by me for a class at BYU-Idaho Pathways program. Hosted on Render, and sometimes takes time
+              to load. If you view the documentation, you can play with the backend results, but remember if you are logged in vs not logged in will
+              get you different results, and since you aren't me, you will only have the privelges of a user, and not an employee or an admin.
+            </div>
+            <div class="card-footer">
+              <p class="small-text-padded">Created using node.js & express</p>
+            </div>
+          </a>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <p>
+        ©️2024 | Tiffany Voorhees | Spanish Fork, Utah |
+        <a href="https://www.linkedin.com/in/tiffany-voorhees-64309644/" target="_blank"> LinkedIn </a>
+        |
+        <a href="https://www.facebook.com/tiffster25" target="_blank"> Facebook </a>
+      </p>
+    </footer>
 
-        <!-- Custom JavaScript -->
-    </body>
+    <!-- Custom JavaScript -->
+  </body>
 </html>

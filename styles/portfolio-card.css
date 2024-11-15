@@ -1,0 +1,55 @@
+.card-linkable{
+    text-decoration: none;
+    color: black;
+}
+
+.card {
+  /* ******************** Create the card to fit 3 to a column ******************** */
+    flex: 1 1 calc(33.33% - 16px);
+    max-width: calc(33.33% - 16px);
+    /* Add shadows to create the "card" effect */
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    background-color: #f9f9f9;
+    transition: 0.3s;
+    padding: 1rem;
+
+    /* ******************** Make the card a flex container ******************** */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Ensures the footer stays at the bottom */
+  }
+
+.card-container-outer {
+  margin: 1rem;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.card-container-inner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  width: 100%;
+}
+
+/* On mouse-over, add a deeper shadow */
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* On mouse-over the card underline the heading */
+.card:hover h3{
+  text-decoration: underline;
+}
+
+.card-body{
+    flex-grow: 1;
+    margin-bottom: 1rem; /* Adds space between body and footer */
+}
+
+.card-footer{
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+}
