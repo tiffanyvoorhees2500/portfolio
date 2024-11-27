@@ -11,7 +11,7 @@ main {
     padding: 5rem;
     background: fff;
     border-radius: 15px 50px;
-    animation: myanima 4s infinite alternate;
+    animation: myanima 4s 1 alternate;
   }
   
   @keyframes myanima {
