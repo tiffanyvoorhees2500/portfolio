@@ -1,0 +1,39 @@
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+  }
+  
+  .box {
+    border: 5px dashed teal;
+    padding: 5rem;
+    background: fff;
+    border-radius: 15px 50px;
+    animation: myanima 4s infinite alternate;
+  }
+  
+  @keyframes myanima {
+    0% {
+      transform: skew(30deg, 20deg);
+      background-color: #abe;
+    }
+    25% {
+      transform: translateX(200px) translateY(-200px);
+      background-color: #24a;
+      color: #fff;
+    }
+    50%{
+      transform: rotate(0.5turn);
+    }
+    75% {
+      transform: translateX(-200px) translateY(-200px);
+      background-color: #57d;
+    }
+    100%{
+      transform: skew(30deg, 20deg);
+      background-color: #abe;
+    }
+  }
+  
