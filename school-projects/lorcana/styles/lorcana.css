@@ -1,0 +1,51 @@
+.flip-card {
+  perspective: 1000px;
+  width: 100%;
+  height: 300px;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 1s;
+  transform-style: preserve-3d;
+}
+
+/* Do a flip when you move the mouse over the flip box container */
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+/* Position the front and back side */
+.card__face--front,
+.card__face--back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden; /*Safari*/
+  backface-visibility: hidden;
+}
+
+/* Style the front side (fallback if image is missing */
+.card__face--front {
+  background-image: linear-gradient(to bottom right, #99e1d9, #1d6357);
+  color: black;
+}
+
+/* Style the back side */
+.card__face--back {
+  background-image: linear-gradient(to bottom right, #1d6357, #99e1d9);
+  color: black;
+  transform: rotateY(180deg);
+}
+
+.card__face--image {
+  padding-top: 0.5rem;
+}
+
+/* Change the color of the original card */
+.card {
+  background-color: black;
+}
