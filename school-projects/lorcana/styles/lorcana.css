@@ -30,14 +30,14 @@
 
 /* Style the front side (fallback if image is missing */
 .card__face--front {
-  background-image: linear-gradient(to bottom right, #99e1d9, #1d6357);
-  color: black;
+  background-image: linear-gradient(to bottom right, var(--light-accent), var(--dark-accent));
+  color: var(--dark-color);
 }
 
 /* Style the back side */
 .card__face--back {
-  background-image: linear-gradient(to bottom right, #1d6357, #99e1d9);
-  color: black;
+  background-image: linear-gradient(to bottom right, var(--light-accent), var(--light-accent));
+  color: var(--dark-color);
   transform: rotateY(180deg);
 }
 
@@ -47,5 +47,63 @@
 
 /* Change the color of the original card */
 .card {
-  background-color: black;
+  background-color: var(--dark-color);
+}
+
+.support-text {
+  font-size: 0.8rem;
+  text-align: left;
+  padding: 0.5rem;
+}
+
+.italic-text {
+  font-style: italic;
+}
+
+hr {
+  margin:0.4rem;
+  border-color: var(--dark-color);
+}
+
+.lorcana-btn {
+  padding: 0.5rem;
+  border-radius: 0.8rem;
+  display: block;
+  width: 100%;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+  background-color: var(--dark-color);
+  color: var(--light-color);
+}
+.lorcana-btn:hover {
+  text-decoration: underline;
+  background-color: var(--dark-accent);
+}
+
+.lorcana-btn-sm {
+  font-size: 0.8rem;
+  padding: 0.2rem;
+  background-color: var(--dark-color);
+  color: var(--light-color);
+  border-radius: 0.5rem;
+}
+.lorcana-btn-sm:hover {
+  background-color: var(--dark-accent);
+}
+
+.lorcana-btn-text {
+  padding-right: 0.5rem;
+  padding-left: 0.5rem;
+}
+
+.button-div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+}
+
+.filtering-section{
+  display: flex;
+  margin-bottom: 2rem;
 }

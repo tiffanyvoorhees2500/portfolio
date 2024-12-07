@@ -9,10 +9,12 @@
 
     <title>TV-Disney Lorcana</title>
 
-    <link rel="stylesheet" href="../../styles/main.css" />
-    <link rel="stylesheet" href="../../styles/main-lg.css" />
-    <link rel="stylesheet" href="../../styles/cards.css" />
+    <link rel="stylesheet" type="text/css" href="../../styles/main.css" />
+    <link rel="stylesheet" type="text/css" href="../../styles/main-lg.css" />
+    <link rel="stylesheet" type="text/css" href="../../styles/cards.css" />
     <link rel="stylesheet" type="text/css" href="styles/lorcana.css" />
+    <link rel="stylesheet" type="text/css" href="../../styles/inputs.css" />
+    <link rel="stylesheet" type="text/css" href="../../styles/modal.css" />
 
     <script src="scripts/lorcana.js" type="module"></script>
   </head>
@@ -20,12 +22,58 @@
     <header id="site-header"></header>
     <main>
       <h1>Disney Lorcana by Tiffany Voorhees</h1>
-      <section class="card-container-outer">
-        <div class="card-container-inner">
-
+      <div class="filtering-container">
+        <div class="floating-group">
+          <select
+            id="filterCardsSets"
+            class="floating-select"
+            onclick="this.setAttribute('value', this.value);"
+            onchange="this.setAttribute('value', this.value);"
+            value=""
+          >
+            <option value=""></option>
+            <option value="My Collection">My Collection</option>
+            <option value="My Favorites">My Favorites</option>
+            <option value="The First Chapter">The First Chapter</option>
+            <option value="Rise of the Floodborn">Rise of the Floodborn</option>
+            <option value="Into the Inklands">Into the Inklands</option>
+            <option value="Ursula's Return">Ursula's Return</option>
+            <option value="Shimmering Skies">Shimmering Skies</option>
+            <option value="Azurite Sea">Azurite Sea</option>
+          </select>
+          <label for="filterCardsSets" class="floating-label">Filter By Sets</label>
         </div>
+        <div class="floating-group">
+          <select
+            id="filterCardsColors"
+            class="floating-select"
+            onclick="this.setAttribute('value', this.value);"
+            onchange="this.setAttribute('value', this.value);"
+            value=""
+          >
+            <option value=""></option>
+            <option value="Amber">Amber</option>
+            <option value="Amethyst">Amythyst</option>
+            <option value="Emerald">Emerald</option>
+            <option value="Ruby">Ruby</option>
+            <option value="Sapphire">Sapphire</option>
+            <option value="Steel">Steel</option>
+          </select>
+          <label for="filterCardsColors" class="floating-label">Filter By Color</label>
+        </div>
+      </div>
+      <section class="card-container-outer">
+        <div class="card-container-inner"></div>
       </section>
+      <button id="load-button" class="lorcana-btn">Load More</button>
     </main>
+    <div id="lorcana-detail-modal" class="modal-window">
+      <div>
+        <a href="#" title="Close" class="modal-close">Close</a>
+        <h1 id="card-title">Card Title</h1>
+        <ul id="card-details-list" class="details-list"></ul>
+      </div>
+    </div>
     <footer id="site-footer"></footer>
   </body>
 </html>

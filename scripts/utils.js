@@ -17,23 +17,16 @@ export const loadHeaderFooter = async function () {
 };
 
 async function loadTemplate(path) {
-    const html = await fetch(path);
-    const htmlString = await html.text();
+  const html = await fetch(path);
+  const htmlString = await html.text();
 
-    return htmlString;
+  return htmlString;
 }
 
-export const renderListWithTemplate = function (
-  templateFn,
-  parentElement,
-  list,
-  position = 'afterbegin',
-  clear = false
-) {
-  console.log(list);
+export const renderListWithTemplate = function (templateFn, parentElement, list, position = 'afterbegin', clear = false) {
   const HTMLProdDisplay = list.map(templateFn);
   parentElement.insertAdjacentHTML(position, HTMLProdDisplay.join(''));
   if (clear) {
-      parentElement.innerHTML = '';
+    parentElement.innerHTML = '';
   }
 };
