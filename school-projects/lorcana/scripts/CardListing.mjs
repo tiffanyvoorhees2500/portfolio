@@ -18,6 +18,7 @@ function renderCard(card, parentElement) {
   frontImageElement.alt = `Image of ${card.Name}`;
   frontImageElement.width = 245;
   frontImageElement.height = 260;
+  frontImageElement.loading = 'lazy';
 
   // Element for the Back cardface
   const cardBackElement = document.createElement('div');
