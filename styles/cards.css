@@ -5,8 +5,9 @@
 
 .card {
   /* ******************** Create the card to fit 3 to a column ******************** */
-    flex: 1 1 calc(33.33% - 16px);
-    max-width: calc(33.33% - 16px);
+    flex: 1 1 calc(100% - 32px);
+    max-width: calc(100% - 32px);
+    min-height: 300px;
     /* Add shadows to create the "card" effect */
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     transition: 0.3s;

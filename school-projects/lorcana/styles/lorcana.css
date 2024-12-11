@@ -107,3 +107,17 @@ hr {
   display: flex;
   margin-bottom: 2rem;
 }
+
+.details-list{
+  list-style: none;
+}
+
+.details-list li{
+  display: flex;
+  justify-content: space-between;
+}
+
+.detail-grid{
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr 2fr;
+}

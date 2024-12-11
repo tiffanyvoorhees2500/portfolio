@@ -1,4 +1,6 @@
-function renderCard(card, parentElement) {
+import CardDetails from './CardDetails.mjs';
+
+function renderCard(card, parentElement, dataSource) {
   // Element for the card
   const cardElement = document.createElement('div');
   cardElement.classList.add('card', 'card-linkable', 'flip-card');
@@ -33,6 +35,11 @@ function renderCard(card, parentElement) {
   startDeckElement.classList.add('italic-text');
   startDeckElement.innerHTML = `${card.Type} card from '${card.Set_Name}'`;
 
+  
+  // Body of back of card
+  const cardBodyElement = document.createElement('div');
+  cardBodyElement.classList.add('card-body');
+
   const topDividerElement = document.createElement('hr');
 
   // Paragraph Text for the back
@@ -48,9 +55,15 @@ function renderCard(card, parentElement) {
   // Add a divider
   const dividerElement = document.createElement('hr');
 
+  cardBodyElement.appendChild(topDividerElement);
+  cardBodyElement.appendChild(paragraphElement);
+  cardBodyElement.appendChild(additionalParaElement);
+  cardBodyElement.appendChild(dividerElement);
+
+
   // Button to see more details & button to add to collection
   const buttonDivElement = document.createElement('div');
-  buttonDivElement.classList.add('button-div');
+  buttonDivElement.classList.add('button-div', 'card-footer');
 
   // Heart Button to add to favorites collection (local storage)
   const heartButton = document.createElement('button');
@@ -63,6 +76,11 @@ function renderCard(card, parentElement) {
   detailsLink.classList.add('lorcana-btn-sm', 'lorcana-btn-text');
   detailsLink.href = '#lorcana-detail-modal';
   detailsLink.textContent = 'More details...';
+  detailsLink.addEventListener('click', () => {
+    const cardDetailsParent = document.getElementById('card-details-list');
+    const cardDetails = new CardDetails(card.Name, dataSource, cardDetailsParent);
+    cardDetails.init();
+  });
 
   // Add Button to add to collection (local storage)
   const collectionButton = document.createElement('button');
@@ -77,10 +95,7 @@ function renderCard(card, parentElement) {
   // Append Children to back of card
   cardBackElement.appendChild(backHeadingElement);
   cardBackElement.appendChild(startDeckElement);
-  cardBackElement.appendChild(topDividerElement);
-  cardBackElement.appendChild(paragraphElement);
-  cardBackElement.appendChild(additionalParaElement);
-  cardBackElement.appendChild(dividerElement);
+  cardBackElement.appendChild(cardBodyElement);
   cardBackElement.appendChild(buttonDivElement);
 
   // Append Children to front of card
@@ -93,6 +108,7 @@ function renderCard(card, parentElement) {
   // Append Inner Card Element to the card Element
   cardElement.appendChild(cardInnerElement);
 
+  // Append everything to parent element
   parentElement.appendChild(cardElement);
 }
 
@@ -109,7 +125,7 @@ export default class CardListing {
   async init() {
     const cards = await this.dataSource.getPaginatedCards(this.pagesize, this.page);
     cards.forEach((card) => {
-      renderCard(card, this.parentElement);
+      renderCard(card, this.parentElement, this.dataSource);
     });
   }
 
@@ -137,7 +153,7 @@ export default class CardListing {
     // Clear out previous cards
     this.parentElement.innerHTML = '';
     cards.forEach((card) => {
-      renderCard(card, this.parentElement);
+      renderCard(card, this.parentElement, this.dataSource);
     });
   }
 
@@ -145,7 +161,7 @@ export default class CardListing {
     this.page++;
     const newCards = await this.dataSource.getPaginatedCards(this.pagesize, this.page, this.fetchType, this.filterParams);
     newCards.forEach((card) => {
-      renderCard(card, this.parentElement);
+      renderCard(card, this.parentElement, this.dataSource);
     });
   }
 }

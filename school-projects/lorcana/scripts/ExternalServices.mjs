@@ -12,17 +12,6 @@ function convertToJson(res) {
 
 export default class ExternalServices {
   constructor() {}
-  // async getAllCards() {
-  //   const response = await fetch(`${baseURL}/all`);
-  //   const data = await convertToJson(response);
-  //   return data;
-  // }
-  async findCardById(id) {
-    const response = await fetch(`${baseURL}/all`);
-    const product = await convertToJson(response);
-    return product.Result;
-  }
-
   async getPaginatedCards(pagesize = 30, page = 1, fetchType = 'all', filterParameters = {}) {
     // Build custom URL
     let url = `${baseURL}/${fetchType}?pagesize=${pagesize}&page=${page}`;
@@ -32,7 +21,7 @@ export default class ExternalServices {
       url += `&search=`;
       let needSemicolon = false;
       for (const [key, value] of Object.entries(filterParameters)) {
-        if ((needSemicolon === false)) {
+        if (needSemicolon === false) {
           url += `${key}=${value}`;
           needSemicolon = true;
         } else {
@@ -43,5 +32,11 @@ export default class ExternalServices {
     const response = await fetch(`${url}`);
     const data = await convertToJson(response);
     return data;
+  }
+
+  async getCardByName(cardName) {
+    const response = await fetch(`${baseURL}/fetch?strict=${cardName}`);
+    const cardDetails = await convertToJson(response);
+    return cardDetails[0]; // We only want to return one object
   }
 }

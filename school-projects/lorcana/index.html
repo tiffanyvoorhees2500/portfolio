@@ -12,15 +12,18 @@
     <link rel="stylesheet" type="text/css" href="../../styles/main.css" />
     <link rel="stylesheet" type="text/css" href="../../styles/main-lg.css" />
     <link rel="stylesheet" type="text/css" href="../../styles/cards.css" />
+    <link rel="stylesheet" type="text/css" href="../../styles/cards-lg.css" />
     <link rel="stylesheet" type="text/css" href="styles/lorcana.css" />
     <link rel="stylesheet" type="text/css" href="../../styles/inputs.css" />
+    <link rel="stylesheet" type="text/css" href="../../styles/inputs-lg.css" />
     <link rel="stylesheet" type="text/css" href="../../styles/modal.css" />
+    <link rel="stylesheet" type="text/css" href="../../styles/loader.css" />
 
     <script src="scripts/lorcana.js" type="module"></script>
   </head>
   <body>
     <header id="site-header"></header>
-    <main>
+    <main class="main-container">
       <h1>Disney Lorcana by Tiffany Voorhees</h1>
       <div class="filtering-container">
         <div class="floating-group">
@@ -70,8 +73,10 @@
     <div id="lorcana-detail-modal" class="modal-window">
       <div>
         <a href="#" title="Close" class="modal-close">Close</a>
-        <h1 id="card-title">Card Title</h1>
-        <ul id="card-details-list" class="details-list"></ul>
+        <div class="loading-div">Loading<span class="loader"></span></div>
+        <ul id="card-details-list" class="details-list">
+          <li class="detail-"></li>
+        </ul>
       </div>
     </div>
     <footer id="site-footer"></footer>
