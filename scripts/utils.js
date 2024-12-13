@@ -40,8 +40,11 @@ export function setLocalStorage(key, data) {
 }
 
 export function toggleObjectInArray(array, obj, key) {
-  // Find the index of the object in the array based on the key
-  const index = array.findIndex((item) => item[key] === obj[key]);
+  let index = -1;
+  if (array !== null) {
+    // Find the index of the object in the array based on the key
+    index = array.findIndex((item) => item[key] === obj[key]);
+  }
 
   if (index !== -1) {
     // Object exists, remove it
@@ -55,8 +58,12 @@ export function toggleObjectInArray(array, obj, key) {
   return array;
 }
 
-export function objExistsInArray(array, obj, key){
-  const index = array.findIndex((item) => item[key] === obj[key]);
+export function objExistsInArray(array, obj, key) {
+  let index = -1;
+  if (array !== null) {
+    // Find the index of the object in the array based on the key
+    index = array.findIndex((item) => item[key] === obj[key]);
+  }
   let objExists = false;
 
   if (index !== -1) {

@@ -30,7 +30,6 @@ export default class ExternalServices {
         }
       }
     }
-    console.log(url);
     const response = await fetch(`${url}`);
     const data = await convertToJson(response);
     return data;
