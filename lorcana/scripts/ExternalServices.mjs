@@ -1,3 +1,4 @@
+import { getLocalStorage } from '../../scripts/utils.js';
 const baseURL = 'https://api.lorcana-api.com/cards';
 
 function convertToJson(res) {
@@ -38,5 +39,15 @@ export default class ExternalServices {
     const response = await fetch(`${baseURL}/fetch?strict=${cardName}`);
     const cardDetails = await convertToJson(response);
     return cardDetails[0]; // We only want to return one object
+  }
+
+  async getFavorites(){
+    const favorites = getLocalStorage('favorites');
+    return favorites;
+  }
+
+  async getCollection(){
+    const collection = getLocalStorage('collection');
+    return collection;
   }
 }

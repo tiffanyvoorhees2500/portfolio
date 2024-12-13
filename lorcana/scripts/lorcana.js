@@ -1,5 +1,5 @@
 import CardListing from './CardListing.mjs';
-import { loadHeaderFooter } from '../../../scripts/utils.js';
+import { loadHeaderFooter } from '../../scripts/utils.js';
 import ExternalServices from './ExternalServices.mjs';
 
 // Load the main tiffanyvoorhees.com header and footer

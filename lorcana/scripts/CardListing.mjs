@@ -1,3 +1,4 @@
+import { getLocalStorage, objExistsInArray, setLocalStorage, toggleObjectInArray } from '../../scripts/utils.js';
 import CardDetails from './CardDetails.mjs';
 
 function renderCard(card, parentElement, dataSource) {
@@ -35,7 +36,6 @@ function renderCard(card, parentElement, dataSource) {
   startDeckElement.classList.add('italic-text');
   startDeckElement.innerHTML = `${card.Type} card from '${card.Set_Name}'`;
 
-  
   // Body of back of card
   const cardBodyElement = document.createElement('div');
   cardBodyElement.classList.add('card-body');
@@ -60,7 +60,6 @@ function renderCard(card, parentElement, dataSource) {
   cardBodyElement.appendChild(additionalParaElement);
   cardBodyElement.appendChild(dividerElement);
 
-
   // Button to see more details & button to add to collection
   const buttonDivElement = document.createElement('div');
   buttonDivElement.classList.add('button-div', 'card-footer');
@@ -68,7 +67,34 @@ function renderCard(card, parentElement, dataSource) {
   // Heart Button to add to favorites collection (local storage)
   const heartButton = document.createElement('button');
   heartButton.classList.add('lorcana-btn-sm');
-  heartButton.textContent = '❤️';
+
+  // Compare local storage to see if card is a favorite already
+  let favorites = getLocalStorage('favorites');
+  const favoriteExists = objExistsInArray(favorites, card, 'Name');
+  if (favoriteExists) {
+    heartButton.textContent = '❤️';
+  } else {
+    heartButton.textContent = '🩶';
+  }
+
+  // Add the eventListener to update favorites and text content
+  heartButton.addEventListener('click', () => {
+    if (!favorites) {
+      setLocalStorage('favorites', []);
+      favorites = [];
+    }
+
+    const updatedFavorites = toggleObjectInArray(favorites, card, 'Name');
+    setLocalStorage('favorites', updatedFavorites);
+
+    // Set heartButton textContent
+  const favoriteExists = objExistsInArray(updatedFavorites, card, 'Name');
+    if (favoriteExists) {
+      heartButton.textContent = '❤️';
+    } else {
+      heartButton.textContent = '🩶';
+    }
+  });
 
   // Details button to see all the details in a modal
   const detailsLink = document.createElement('a');
@@ -85,7 +111,34 @@ function renderCard(card, parentElement, dataSource) {
   // Add Button to add to collection (local storage)
   const collectionButton = document.createElement('button');
   collectionButton.classList.add('lorcana-btn-sm');
-  collectionButton.textContent = '⭐';
+
+  // Compare local Collection to see if card exists
+  let collection = getLocalStorage('collection');
+  const collectionExists = objExistsInArray(collection, card, 'Name');
+  if (collectionExists) {
+    collectionButton.textContent = '⭐';
+  } else {
+    collectionButton.textContent = '➕';
+  }
+
+  // Add the eventListener to update favorites and text content
+  collectionButton.addEventListener('click', () => {
+    if (!collection) {
+      setLocalStorage('collection', []);
+      collection = [];
+    }
+
+    const updatedFavorites = toggleObjectInArray(collection, card, 'Name');
+    setLocalStorage('collection', updatedFavorites);
+
+    // Set collectionButton textContent
+  const collectionExists = objExistsInArray(updatedFavorites, card, 'Name');
+    if (collectionExists) {
+      collectionButton.textContent = '⭐';
+  } else {
+    collectionButton.textContent = '➕';
+  }
+  });
 
   //Append buttons to the buttonDivElement
   buttonDivElement.appendChild(heartButton);
@@ -136,25 +189,52 @@ export default class CardListing {
 
     // Setting filters based on select input elements
     const setName = document.getElementById('filterCardsSets').value;
-    if (setName !== '') {
-      this.filterParams.Set_Name = setName;
+
+    // If setName is 'My Collection' or 'My Favorites', then we get the items from local storage instead of API
+    let cards = [];
+    if (setName === 'My Collection' || setName === 'My Favorites') {
+      if (setName === 'My Collection') {
+        cards = getLocalStorage('collection');
+      } else if (setName === 'My Favorites') {
+        cards = getLocalStorage('favorites');
+      }
     } else {
-      delete this.filterParams.Set_Name;
-    }
-    const color = document.getElementById('filterCardsColors').value;
-    if (color !== '') {
-      this.filterParams.Color = color;
-    } else {
-      delete this.filterParams.Color;
+      if (setName !== '') {
+        this.filterParams.Set_Name = setName;
+      } else {
+        delete this.filterParams.Set_Name;
+      }
+      const color = document.getElementById('filterCardsColors').value;
+      if (color !== '') {
+        this.filterParams.Color = color;
+      } else {
+        delete this.filterParams.Color;
+      }
+
+      // use filtered items to get new list of cards to render
+      cards = await this.dataSource.getPaginatedCards(this.pagesize, this.page, this.fetchType, this.filterParams);
     }
 
-    // use filtered items to get new list of cards to render
-    const cards = await this.dataSource.getPaginatedCards(this.pagesize, this.page, this.fetchType, this.filterParams);
     // Clear out previous cards
     this.parentElement.innerHTML = '';
-    cards.forEach((card) => {
-      renderCard(card, this.parentElement, this.dataSource);
-    });
+
+    if (cards === null) {
+      this.parentElement.innerHTML = '<h1>No cards found</h1>';
+    } else {
+      cards.forEach((card) => {
+        renderCard(card, this.parentElement, this.dataSource);
+      });
+    }
+
+    // If cards are equal or less than pagesize, hide load more button
+    const loadMoreButton = document.querySelector('#load-button');
+    console.log(cards.length);
+    console.log(this.pagesize * this.page);
+    if (cards.length >= this.pagesize * this.page) {
+      loadMoreButton.style = 'display:block';
+    } else {
+      loadMoreButton.style = 'display:none';
+    }
   }
 
   async loadMoreCards() {

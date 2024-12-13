@@ -66,8 +66,19 @@ export default class CardDetails {
     detailsHeaderElement.textContent = 'Additional Details';
 
     // Add a details grid within the listitem
-    const gridItem = document.createElement('div');
-    gridItem.classList.add('detail-grid');
+    const detailsGrid = document.createElement('div');
+    detailsGrid.classList.add('detail-grid');
+    detailsGrid.innerHTML = `
+      <div>Classification:</div><div>${card.Classifications}</div>
+      <div>Color:</div><div>${card.Color}</div>
+      <div>Cost:</div><div>${card.Cost} Ink</div>
+      <div>Inkable:</div><div>${card.Inkable}</div>
+      <div>Lore:</div><div>${card.Lore}</div>
+      <div>Rarity:</div><div>${card.Rarity}</div>
+      <div>Strength:</div><div>${card.Strength}</div>
+      <div>Willpower:</div><div>${card.Willpower}</div>
+    `;
+
 
     const parentElement = this.parentElement;
     parentElement.appendChild(cardTitleElement);
@@ -80,6 +91,7 @@ export default class CardDetails {
     parentElement.appendChild(additionalParaElement);
     parentElement.appendChild(dividerElementTwo);
     parentElement.appendChild(detailsHeaderElement);
+    parentElement.appendChild(detailsGrid);
 
     const loadingSpinner = document.querySelector('.loading-div');
     loadingSpinner.style = 'display: none';

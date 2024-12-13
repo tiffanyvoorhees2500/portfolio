@@ -39,6 +39,11 @@
   background-image: linear-gradient(to bottom right, var(--light-accent), var(--light-accent));
   color: var(--dark-color);
   transform: rotateY(180deg);
+
+  /* ******************** Make the card back a flex container ******************** */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Ensures the footer stays at the bottom */
 }
 
 .card__face--image {
@@ -48,6 +53,15 @@
 /* Change the color of the original card */
 .card {
   background-color: var(--dark-color);
+}
+
+.card-body{
+  flex-grow: 1;
+  overflow: auto;
+}
+
+.card-footer{
+  margin-top: auto;
 }
 
 .support-text {
@@ -61,7 +75,8 @@
 }
 
 hr {
-  margin:0.4rem;
+  margin-left:0.4rem;
+  margin-right: 0.4rem;
   border-color: var(--dark-color);
 }
 
@@ -119,5 +134,8 @@ hr {
 
 .detail-grid{
   display: grid;
-  grid-template-columns: 1fr 2fr 1fr 2fr;
+  grid-template-columns: 1fr 1fr;
+  font-size: .8rem;
+  justify-content: space-between;
+  text-align: left;
 }

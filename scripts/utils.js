@@ -30,3 +30,39 @@ export const renderListWithTemplate = function (templateFn, parentElement, list,
     parentElement.innerHTML = '';
   }
 };
+
+export function getLocalStorage(key) {
+  return JSON.parse(localStorage.getItem(key));
+}
+
+export function setLocalStorage(key, data) {
+  localStorage.setItem(key, JSON.stringify(data));
+}
+
+export function toggleObjectInArray(array, obj, key) {
+  // Find the index of the object in the array based on the key
+  const index = array.findIndex((item) => item[key] === obj[key]);
+
+  if (index !== -1) {
+    // Object exists, remove it
+    array.splice(index, 1);
+  } else {
+    // Object doesn't exist, add it
+    array.push(obj);
+  }
+
+  // Return the updated array
+  return array;
+}
+
+export function objExistsInArray(array, obj, key){
+  const index = array.findIndex((item) => item[key] === obj[key]);
+  let objExists = false;
+
+  if (index !== -1) {
+    // Object exists
+    objExists = true;
+  }
+
+  return objExists;
+}
