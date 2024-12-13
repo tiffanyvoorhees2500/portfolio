@@ -251,7 +251,7 @@ export default class CardListing {
 
     // If cards are equal or less than pagesize, hide load more button
     const loadMoreButton = document.querySelector('#load-button');
-    if (cards.length >= this.pagesize * this.page) {
+    if (cards && cards.length >= this.pagesize * this.page) {
       loadMoreButton.style = 'display:block';
     } else {
       loadMoreButton.style = 'display:none';
