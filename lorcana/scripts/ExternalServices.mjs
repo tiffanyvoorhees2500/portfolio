@@ -23,13 +23,14 @@ export default class ExternalServices {
       let needSemicolon = false;
       for (const [key, value] of Object.entries(filterParameters)) {
         if (needSemicolon === false) {
-          url += `${key}=${value}`;
+          url += `${key}${value}`;
           needSemicolon = true;
         } else {
-          url += `;${key}=${value}`;
+          url += `;${key}${value}`;
         }
       }
     }
+    console.log(url);
     const response = await fetch(`${url}`);
     const data = await convertToJson(response);
     return data;

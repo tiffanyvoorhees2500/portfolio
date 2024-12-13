@@ -190,6 +190,9 @@ export default class CardListing {
     // Setting filters based on select input elements
     const setName = document.getElementById('filterCardsSets').value;
     const color = document.getElementById('filterCardsColors').value;
+    const rarity = document.getElementById('filterCardsRarity').value;
+    const searchInput = document.getElementById('filterCardsSearch').value;
+    
 
     // If setName is 'My Collection' or 'My Favorites', then we get the items from local storage instead of API
     let cards = [];
@@ -203,16 +206,32 @@ export default class CardListing {
       if (color != '') {
         cards = cards.filter((card) => card.Color === color);
       }
+      if (rarity != '') {
+        cards = cards.filter((card) => card.Rarity === rarity);
+      }
+      if(searchInput != ''){
+        cards = cards.filter((card) => card.Name.includes(searchInput));
+      }
     } else {
       if (setName !== '') {
-        this.filterParams.Set_Name = setName;
+        this.filterParams.Set_Name = `=${setName}`;
       } else {
         delete this.filterParams.Set_Name;
       }
       if (color !== '') {
-        this.filterParams.Color = color;
+        this.filterParams.Color = `=${color}`;
       } else {
         delete this.filterParams.Color;
+      }
+      if (rarity !== '') {
+        this.filterParams.Rarity = `=${rarity}`;
+      } else {
+        delete this.filterParams.Rarity;
+      }
+      if (searchInput !== '') {
+        this.filterParams.Name = `~${searchInput}`;
+      } else {
+        delete this.filterParams.Name;
       }
 
       // use filtered items to get new list of cards to render

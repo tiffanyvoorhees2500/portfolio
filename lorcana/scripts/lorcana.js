@@ -17,14 +17,32 @@ loadButton.addEventListener('click', () => {
   cardListings.loadMoreCards();
 });
 
-// Set the event listener for the filterCardsSets select Element
-const filterCardsSetsElement = document.querySelector('#filterCardsSets');
-filterCardsSetsElement.addEventListener('change', () => {
+// Set the event listener for the search button
+const searchBtn = document.querySelector('#searchBtn');
+searchBtn.addEventListener('click', () => {
   cardListings.getFilteredCards();
-});
+})
 
-// Set the event listener for the filterCardsColor select Element
-const filterCardsColorElement = document.querySelector('#filterCardsColors');
-filterCardsColorElement.addEventListener('change', () => {
-  cardListings.getFilteredCards();
-});
+// // Set the event listener for the filterCardsSearch input Element
+// const filterCardsSearchElement = document.querySelector('#filterCardsSearch');
+// filterCardsSearchElement.addEventListener('change', () => {
+//   cardListings.searchForCardByName();
+// });
+
+// // Set the event listener for the filterCardsSets select Element
+// const filterCardsSetsElement = document.querySelector('#filterCardsSets');
+// filterCardsSetsElement.addEventListener('change', () => {
+//   cardListings.getFilteredCards();
+// });
+
+// // Set the event listener for the filterCardsColor select Element
+// const filterCardsColorElement = document.querySelector('#filterCardsColors');
+// filterCardsColorElement.addEventListener('change', () => {
+//   cardListings.getFilteredCards();
+// });
+
+// // Set the event listener for the filterCardsRarity select Element
+// const filterCardsRarityElement = document.querySelector('#filterCardsRarity');
+// filterCardsRarityElement.addEventListener('change', () => {
+//   cardListings.getFilteredCards();
+// });

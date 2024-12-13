@@ -55,12 +55,12 @@
   background-color: var(--dark-color);
 }
 
-.card-body{
+.card-body {
   flex-grow: 1;
   overflow: auto;
 }
 
-.card-footer{
+.card-footer {
   margin-top: auto;
 }
 
@@ -75,7 +75,7 @@
 }
 
 hr {
-  margin-left:0.4rem;
+  margin-left: 0.4rem;
   margin-right: 0.4rem;
   border-color: var(--dark-color);
 }
@@ -118,24 +118,41 @@ hr {
   padding: 1rem;
 }
 
-.filtering-section{
+.filtering-section {
   display: flex;
   margin-bottom: 2rem;
 }
 
-.details-list{
+.details-list {
   list-style: none;
 }
 
-.details-list li{
+.details-list li {
   display: flex;
   justify-content: space-between;
 }
 
-.detail-grid{
+.detail-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  font-size: .8rem;
+  font-size: 0.8rem;
   justify-content: space-between;
   text-align: left;
+}
+
+.section-divider {
+  margin-bottom: 1rem;
+}
+
+.filtering-search-btn {
+  height: 36px;
+  padding: .5rem;
+  border: 2px solid var(--dark-accent);
+  background-color: var(--light-accent);
+  border-radius: 0.8rem;
+  font-family: var(--heading-font);
+}
+
+.filtering-search-btn:hover{
+  height: 40px;
 }

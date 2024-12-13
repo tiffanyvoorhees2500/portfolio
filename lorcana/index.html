@@ -64,6 +64,28 @@
           </select>
           <label for="filterCardsColors" class="floating-label">Filter By Color</label>
         </div>
+        <div class="floating-group">
+          <select
+            id="filterCardsRarity"
+            class="floating-select"
+            onclick="this.setAttribute('value', this.value);"
+            onchange="this.setAttribute('value', this.value);"
+            value=""
+          >
+            <option value=""></option>
+            <option value="Common">Common</option>
+            <option value="Uncommon">Uncommon</option>
+            <option value="Rare">Rare</option>
+            <option value="Super Rare">Super Rare</option>
+            <option value="Legendary">Legendary</option>
+          </select>
+          <label for="filterCardsRarity" class="floating-label">Filter By Rarity</label>
+        </div>
+        <div class='floating-group'>
+          <input id='filterCardsSearch' class='floating-input'>
+          <label for='filterCardsSearch' class='floating-label'>Filter By Card Name<Search></Search></label>
+        </div>
+        <button id='searchBtn' class='filtering-search-btn'>Search</button>
       </div>
       <section class="card-container-outer">
         <div class="card-container-inner"></div>
