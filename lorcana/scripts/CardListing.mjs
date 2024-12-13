@@ -88,7 +88,7 @@ function renderCard(card, parentElement, dataSource) {
     setLocalStorage('favorites', updatedFavorites);
 
     // Set heartButton textContent
-  const favoriteExists = objExistsInArray(updatedFavorites, card, 'Name');
+    const favoriteExists = objExistsInArray(updatedFavorites, card, 'Name');
     if (favoriteExists) {
       heartButton.textContent = '❤️';
     } else {
@@ -132,12 +132,12 @@ function renderCard(card, parentElement, dataSource) {
     setLocalStorage('collection', updatedFavorites);
 
     // Set collectionButton textContent
-  const collectionExists = objExistsInArray(updatedFavorites, card, 'Name');
+    const collectionExists = objExistsInArray(updatedFavorites, card, 'Name');
     if (collectionExists) {
       collectionButton.textContent = '⭐';
-  } else {
-    collectionButton.textContent = '➕';
-  }
+    } else {
+      collectionButton.textContent = '➕';
+    }
   });
 
   //Append buttons to the buttonDivElement
@@ -189,14 +189,19 @@ export default class CardListing {
 
     // Setting filters based on select input elements
     const setName = document.getElementById('filterCardsSets').value;
+    const color = document.getElementById('filterCardsColors').value;
 
     // If setName is 'My Collection' or 'My Favorites', then we get the items from local storage instead of API
     let cards = [];
+
     if (setName === 'My Collection' || setName === 'My Favorites') {
       if (setName === 'My Collection') {
         cards = getLocalStorage('collection');
       } else if (setName === 'My Favorites') {
         cards = getLocalStorage('favorites');
+      }
+      if (color != '') {
+        cards = cards.filter((card) => card.Color === color);
       }
     } else {
       if (setName !== '') {
@@ -204,7 +209,6 @@ export default class CardListing {
       } else {
         delete this.filterParams.Set_Name;
       }
-      const color = document.getElementById('filterCardsColors').value;
       if (color !== '') {
         this.filterParams.Color = color;
       } else {
@@ -218,7 +222,7 @@ export default class CardListing {
     // Clear out previous cards
     this.parentElement.innerHTML = '';
 
-    if (cards === null) {
+    if (cards === null || cards.length <= 0) {
       this.parentElement.innerHTML = '<h1>No cards found</h1>';
     } else {
       cards.forEach((card) => {
@@ -228,8 +232,6 @@ export default class CardListing {
 
     // If cards are equal or less than pagesize, hide load more button
     const loadMoreButton = document.querySelector('#load-button');
-    console.log(cards.length);
-    console.log(this.pagesize * this.page);
     if (cards.length >= this.pagesize * this.page) {
       loadMoreButton.style = 'display:block';
     } else {
