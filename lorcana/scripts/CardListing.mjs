@@ -203,14 +203,16 @@ export default class CardListing {
       } else if (setName === 'My Favorites') {
         cards = getLocalStorage('favorites');
       }
-      if (color != '') {
-        cards = cards.filter((card) => card.Color === color);
-      }
-      if (rarity != '') {
-        cards = cards.filter((card) => card.Rarity === rarity);
-      }
-      if(searchInput != ''){
-        cards = cards.filter((card) => card.Name.includes(searchInput));
+      if (cards !== null && cards.length > 0) {
+        if (color != '') {
+          cards = cards.filter((card) => card.Color === color);
+        }
+        if (rarity != '') {
+          cards = cards.filter((card) => card.Rarity === rarity);
+        }
+        if(searchInput != ''){
+          cards = cards.filter((card) => card.Name.includes(searchInput));
+        }
       }
     } else {
       if (setName !== '') {
