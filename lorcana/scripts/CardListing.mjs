@@ -79,6 +79,7 @@ function renderCard(card, parentElement, dataSource) {
 
   // Add the eventListener to update favorites and text content
   heartButton.addEventListener('click', () => {
+    favorites = getLocalStorage('favorites') || [];
     if (!favorites) {
       setLocalStorage('favorites', []);
       favorites = [];
@@ -123,6 +124,7 @@ function renderCard(card, parentElement, dataSource) {
 
   // Add the eventListener to update favorites and text content
   collectionButton.addEventListener('click', () => {
+    collection = getLocalStorage('collection') || [];
     if (!collection) {
       setLocalStorage('collection', []);
       collection = [];
@@ -192,7 +194,6 @@ export default class CardListing {
     const color = document.getElementById('filterCardsColors').value;
     const rarity = document.getElementById('filterCardsRarity').value;
     const searchInput = document.getElementById('filterCardsSearch').value;
-    
 
     // If setName is 'My Collection' or 'My Favorites', then we get the items from local storage instead of API
     let cards = [];
@@ -210,7 +211,7 @@ export default class CardListing {
         if (rarity != '') {
           cards = cards.filter((card) => card.Rarity === rarity);
         }
-        if(searchInput != ''){
+        if (searchInput != '') {
           cards = cards.filter((card) => card.Name.includes(searchInput));
         }
       }

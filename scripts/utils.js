@@ -77,7 +77,7 @@ export function toggleObjectInArray(array, obj, key) {
 
 export function objExistsInArray(array, obj, key) {
   let index = -1;
-  if (array !== null) {
+  if (array !== null && array.length > 0) {
     // Find the index of the object in the array based on the key
     index = array.findIndex((item) => item[key] === obj[key]);
   }
