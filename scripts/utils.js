@@ -14,7 +14,24 @@ export const loadHeaderFooter = async function () {
 
   renderWithTemplate(headerHtml, headerElem);
   renderWithTemplate(footerHtml, footerElem);
+
+  intializeHamburgerMenu();
 };
+
+function intializeHamburgerMenu() {
+  const menu = document.querySelector('#menu');
+  const navigation = document.querySelector('.navigation');
+
+  if (!menu || !navigation) {
+    console.error('Menu or navigation element not found');
+    return;
+  }
+
+  menu.addEventListener('click', () => {
+    menu.classList.toggle('open');
+    navigation.classList.toggle('open');
+  });
+}
 
 async function loadTemplate(path) {
   const html = await fetch(path);
