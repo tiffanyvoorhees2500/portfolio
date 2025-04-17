@@ -1,4 +1,4 @@
-import { getLocalStorage, objExistsInArray, setLocalStorage, toggleObjectInArray } from '../../scripts/utils.js';
+import { getLocalStorage, objExistsInArray, setLocalStorage, toggleObjectInArray } from '../../shared/scripts/utils.js';
 import CardDetails from './CardDetails.mjs';
 
 function renderCard(card, parentElement, dataSource) {

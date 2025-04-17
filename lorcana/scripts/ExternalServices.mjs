@@ -1,4 +1,4 @@
-import { getLocalStorage } from '../../scripts/utils.js';
+import { getLocalStorage } from '../../shared/scripts/utils.js';
 const baseURL = 'https://api.lorcana-api.com/cards';
 
 function convertToJson(res) {
