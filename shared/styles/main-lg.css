@@ -3,37 +3,17 @@
     font-size: 2rem;
   }
 
-  #menu {
-    display: none; /* hide hamburger button */
-  }
-
   .logo a {
     display: flex;
     align-items: center;
+    justify-content: center;
     text-decoration: none;
     font-family: var(--heading-font);
     color: var(--dark-color);
   }
 
   .logo img {
+    height: 90px;
     margin-right: 0.5rem;
-  }
-
-  header {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-  }
-
-  .navigation {
-    flex-direction: row;
-    justify-content: flex-end;
-  }
-
-  .wrap {
-    flex-wrap: nowrap;
-  }
-
-  .navigation a {
-    display: block;
   }
 }
