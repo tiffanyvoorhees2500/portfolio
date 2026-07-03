@@ -16,6 +16,10 @@
   box-sizing: border-box;
 }
 
+html {
+  background-color: #f2f2f2;
+}
+
 body {
   font-family: var(--paragraph-font);
   max-width: 960px;
@@ -23,6 +27,7 @@ body {
   text-align: center;
   margin: 0 auto;
   line-height: 1.6;
+  background-color: var(--light-color);
 }
 
 h1, h2, h3, h4, h5, h6{
@@ -36,22 +41,22 @@ h2 {
 }
 
 .hero {
-  background-color: var(--dark-accent);
-  color: var(--light-color);
+  background-color: var(--light-accent);
+  color: var(--dark-color);
   border-radius: 12px;
   padding: 2rem 1.5rem;
   margin: 1.5rem 0 2.5rem;
 }
 
 .hero h1 {
-  color: var(--light-color);
+  color: var(--dark-accent);
   margin-bottom: 0.5rem;
 }
 
 .hero .tagline {
   font-size: 1.15rem;
   font-weight: 600;
-  color: var(--light-accent);
+  color: var(--dark-accent);
   margin-bottom: 1rem;
 }
 
